@@ -199,4 +199,58 @@
     font-size: 6rem;
     font-weight: 100;
   }
+
+  // big media query
+  // @include respond(tab-port) {
+  // (hover: none) is a way to detect touch devive. vs hover:hover
+  @media only screen and (max-width: 56.25em), only screen and (hover: none) {
+    // set height both to parent and child
+    // for the perspective effect to work
+    // this because due to absolute position on child the parent has no height
+    height: auto;
+    border-radius: 3px;
+    background-color: $color-white;
+    box-shadow: 0 1.5rem 4rem rgba($color-black, 0.15);
+
+    &__side {
+      height: auto;
+      position: relative;
+      box-shadow: none;
+
+      transition: all 0.8s ease;
+      font-size: 2rem;
+
+      &--back {
+        transform: rotateY(0deg);
+        clip-path: polygon(0 15%, 100% 0, 100% 100%, 0 100%);
+      }
+    }
+
+    &:hover &__side--front {
+      // note the minus here!!
+      transform: rotateY(0deg);
+    }
+
+    &__details {
+      padding: 1rem 3rem;
+    }
+
+    // front side styling
+    &__cta {
+      position: relative;
+      top: 0;
+      left: 0;
+      transform: translate(0);
+      width: 100%;
+      padding: 7rem 4rem 4rem 4rem;
+    }
+
+    &__price-box {
+      margin-bottom: 3rem;
+    }
+
+    &__price-value {
+      font-size: 4rem;
+    }
+  }
 }
